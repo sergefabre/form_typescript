@@ -5,7 +5,11 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc -w & nodemon dist/app.js"
+    "start": "tsc -w & nodemon dist/app.js",
+    "ex2": "tsc -w & nodemon dist/allias_generic.js",
+    "ex3": "tsc -w & nodemon dist/class.js",
+    "ex4": "tsc -w & nodemon dist/tuple_enum.js",
+    "deco": "tsc -w & nodemon dist/decorateur.js"
   },
   "repository": {
     "type": "git",

@@ -34,11 +34,11 @@ const c3 = first2([2, 5, 88]); // dans ce cas, TS donne "number" comme type de c
 // On peut utiliser un "généric" dans la définition d'un type
 type identity<ArgType> = (arg: ArgType) => ArgType;
 
-function consoleSize(arg) {
-  console.log(arg.length);
-  return arg;
-}
-const d = consoleSize(3);
+// function consoleSize(arg) {
+//   console.log(arg.length);
+//   return arg;
+// }
+// const d = consoleSize(3);
 // pour que cette appel à la fonction consoleSize return un erreur (car 3 n'a pas la poperty length)
 // on fera ceci, afin que cela nous retourne l'erreur : La propriété 'length' n'existe pas sur le type 'Type'.
 // function consoleSize2<Type>(arg:Type) {
@@ -72,3 +72,35 @@ type Test = typeof test;
 //     nom: string;
 //     age: number;
 // }
+
+// le ReadOnly devant un type Permet de préciser qu'une property soit readonly (non modifiable)
+// par exemple, dabs le cas de cette function, le tableau passé en parametre va etre modifié,
+// du fait que reverse renvoie le tableau à inverser
+function reverse<T>(arr: T[]): T[] {
+  return arr.reverse();
+}
+const arr1 = [1, 2, 3, 4];
+console.log(arr1);
+const arr2 = reverse(arr1);
+console.log(arr1, arr2);
+/**
+ * output
+ * [ 1, 2, 3, 4 ]
+   [ 4, 3, 2, 1 ] [ 4, 3, 2, 1 ]
+ */
+
+// En ajoutant réadonly devant le type T[] du parametre, TS comprends que cela conduit à un blocage du fait du reverse
+// on modifie alors le retour comme ceci, afin que cela renvoie un autre tableau
+// Le readonly a permis de protéger le parametre d'entrer d'une évetuelle erreur de codage
+function reverse2<T>(arr: readonly T[]): T[] {
+  return [...arr].reverse();
+}
+const arr11 = [1, 2, 3, 4];
+console.log(arr11);
+const arr21 = reverse2(arr11);
+console.log(arr11, arr21);
+/**
+ * output
+ * [ 1, 2, 3, 4 ]
+   [ 1, 2, 3, 4 ] [ 4, 3, 2, 1 ]
+ */
