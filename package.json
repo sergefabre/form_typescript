@@ -1,0 +1,23 @@
+{
+  "name": "formation_ts",
+  "version": "1.0.0",
+  "description": "auto formation à TypeScript",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -w & nodemon dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sergefabre/form_typescript.git"
+  },
+  "author": "serge Fabre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergefabre/form_typescript/issues"
+  },
+  "homepage": "https://github.com/sergefabre/form_typescript#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
